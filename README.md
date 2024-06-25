@@ -7,9 +7,13 @@ We are going to use Intellij - Code With Me. This will allow us all to have the 
 TODO -
 1. Add a bunch of unit tests and get excellent code coverage.
 2.
+## Mob Programming Video
+
+Youtube Link: https://youtu.be/FYtm7q0LMRo
 
 # From the Kata's README:
 # Gilded Rose starting position in Java
+
 
 ## Run the TextTest Fixture from Command-Line
 
