@@ -317,7 +317,7 @@ class GildedRoseTest {
 
     @Test
     void checkConjuredItem1() {
-        Item[] items = new Item[]{new Item("Conjured", 10, 20)};
+        Item[] items = new Item[]{new Item("Conjured Hat", 10, 20)};
         GildedRose app = new GildedRose(items);
         app.updateQuality();
 
@@ -330,7 +330,7 @@ class GildedRoseTest {
 
     @Test
     void checkConjuredItem2() {
-        Item[] items = new Item[]{new Item("Conjured", 0, 20)};
+        Item[] items = new Item[]{new Item("Conjured Wand", 0, 20)};
         GildedRose app = new GildedRose(items);
         app.updateQuality();
 

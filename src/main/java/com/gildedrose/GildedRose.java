@@ -1,21 +1,5 @@
 package com.gildedrose;
 
-/*
-If item is Aged Brie, check quality > 50, quality++,
-If item is Backstage Pass, check quality > 50, quality++,
-    then if: sellIn < 11, quality < 50 still, quality++
-    also if: sellIn < 6, quality < 50 still, quality++
-If item is NOT Sulfuras, and quality > 0, quality--
-
-If item is NOT Sulfuras, sellIn--
-
-If sellIn < 0:
-    If item is Aged Brie, check quality < 50, quality ++
-    If item is Backstage Pass, set quality to quality - quality (set to 0)
-    Otherwise, if quality > 0, and item is NOT Sulfuras, quality--
-    (If Sulfuras, ignore in practice)
-*/
-
 class GildedRose {
     public static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
     public static final String AGED_BRIE = "Aged Brie";
@@ -30,7 +14,7 @@ class GildedRose {
     public void updateQuality() {
         for (Item item : items) {
             switch (item.name) {
-                case SULFURAS: { break; } // Sulfras is legendary and never changes
+                case SULFURAS: { break; }
                 case AGED_BRIE: {
                     if (item.quality < 50) item.quality++;
                     item.sellIn--;
@@ -47,17 +31,19 @@ class GildedRose {
                     if (item.sellIn < 0) item.quality = 0;
                     break;
                 }
-                case CONJURED:{
-                    item.quality-=2;
-                    item.sellIn--;
-                    if (item.sellIn < 0 && item.quality > 0) item.quality-=2;
-                    break;
-                }
                 default: {
+                    item.sellIn--;
+                    if (item.name.startsWith("Conjured")) {
+                        item.quality--;
+                    }
                     // names that aren't above
                     item.quality--;
-                    item.sellIn--;
-                    if (item.sellIn < 0 && item.quality > 0) item.quality--;
+                    if (item.sellIn < 0 && item.quality > 0) {
+                        if (item.name.startsWith("Conjured")) {
+                            item.quality--;
+                        }
+                        item.quality--;
+                    }
                     break;
                 }
             }
