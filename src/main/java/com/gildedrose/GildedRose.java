@@ -30,9 +30,7 @@ class GildedRose {
     public void updateQuality() {
         for (Item item : items) {
             switch (item.name) {
-                case SULFURAS: {
-                    break; // Sulfras is a legendary item, and never changes.
-                }
+                case SULFURAS: { break; } // Sulfras is legendary and never changes
                 case AGED_BRIE: {
                     if (item.quality < 50) item.quality++;
                     item.sellIn--;
@@ -64,63 +62,6 @@ class GildedRose {
                 }
             }
             if (item.quality < 0) item.quality = 0;
-        }
-    }
-
-    public void updateQuality2() {
-        for (Item item : items) {
-
-            // group 1
-            if (!item.name.equals(AGED_BRIE) && !item.name.equals(BACK_STAGE)) {
-                if (item.quality > 0 && !item.name.equals(SULFURAS)) {
-//                    item.quality--;
-                    if (item.name.equals(CONJURED)) {
-                        item.quality -= 2;
-                    } else {
-                        item.quality--;
-                    }
-                }
-            } else {
-
-                if (item.quality < 50) {
-                    item.quality++;
-
-                    if (item.name.equals(BACK_STAGE)) {
-                        if (item.sellIn < 11 && item.quality < 50 ) {
-                            item.quality++;
-                        }
-
-                        if (item.sellIn < 6 && item.quality < 50 ) {
-                            item.quality++;
-                        }
-                    }
-                }
-            }
-            if (!item.name.equals(SULFURAS)) {
-                item.sellIn--;
-            }
-
-            if (item.sellIn < 0) {
-                if (!item.name.equals(AGED_BRIE)) {
-                    if (!item.name.equals(BACK_STAGE)) {
-                        if (item.quality > 0 && !item.name.equals(SULFURAS)) {
-//                            item.quality--;
-                            if (item.name.equals(CONJURED)) {
-                                item.quality -= 2;
-                            } else {
-                                item.quality--;
-                            }
-                        }
-                    } else {
-                        item.quality = 0;
-                    }
-                } else {
-                    if (item.quality < 50) {
-                        item.quality++;
-                    }
-                }
-            }
-
         }
     }
 }
