@@ -5,23 +5,16 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-/* Gilded Rose.java updateQuality()
-If item is Aged Brie, check quality > 50, quality++,
-If item is Backstage Pass, check quality > 50, quality++,
-    then if: sellIn < 11, quality < 50 still, quality++
-    also if: sellIn < 6, quality < 50 still, quality++
-If item is Sulfuras, and quality > 0, quality--
-
-If item is NOT Sulfuras, sellIn--
-
-If sellIn < 0:
-    If item is Aged Brie, check quality < 50, quality ++
-    If item is Backstage Pass, set quality to quality - quality (set to 0)
-    Otherwise, if quality > 0, and item is NOT Sulfuras, quality--
-    (If Sulfuras, ignore in practice)
-*/
-
 class GildedRoseTest {
+    @Test
+    void omegaTest() {
+
+    }
+
+    private Item buildItem(String name, Integer sellin, Integer quality) {
+        return new Item(name, sellin, quality);
+    }
+
     @Test
     void checkBackStagePass_SellInLessThan6_QualityOf45() {
         Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 5, 45) };
