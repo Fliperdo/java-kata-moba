@@ -1,5 +1,21 @@
 package com.gildedrose;
 
+/*
+If item is Aged Brie, check quality > 50, quality++,
+If item is Backstage Pass, check quality > 50, quality++,
+    then if: sellIn < 11, quality < 50 still, quality++
+    also if: sellIn < 6, quality < 50 still, quality++
+If item is Sulfuras, and quality > 0, quality--
+
+If item is NOT Sulfuras, sellIn--
+
+If sellIn < 0:
+    If item is Aged Brie, check quality < 50, quality ++
+    If item is Backstage Pass, set quality to quality - quality (set to 0)
+    Otherwise, if quality > 0, and item is NOT Sulfuras, quality--
+    (If Sulfuras, ignore in practice)
+*/
+
 class GildedRose {
     Item[] items;
 
@@ -9,6 +25,7 @@ class GildedRose {
 
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
+            // group 1
             if (!items[i].name.equals("Aged Brie")
                     && !items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                 if (items[i].quality > 0) {
